@@ -22,7 +22,7 @@ type SoccerPlayer @model {
     teamName: String!
 
     virtualTeamAttached: VirtualTeam @relation(value: "playersTeam")
-    
+
 }
 
 type VirtualTeam @model {
@@ -34,28 +34,17 @@ type VirtualTeam @model {
 }
 
 type User @model {
-  id: ID! @isUnique
-  createdAt: Datetime!
-  updateAt: Datetime!
+    id: ID! @isUnique
+    createdAt: Datetime!
+    updateAt: Datetime!
 
-  name: String!
-  email: String!
-  password: String!
-  dateOfBirthday: Datetime!
+    name: String!
+    email: String!
+    password: String!
+    dateOfBirthday: Datetime!
 
 
 
 
 
 }
-
-
-# Uncomment the model below as well
-
-# type Post @model {
-#   id: ID! @isUnique
-#   title: String!
-#
-#   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
-#   author: User! @relation(name: "UserPosts")
-# }
