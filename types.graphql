@@ -1,0 +1,61 @@
+# The following types define the data model of the example service
+# based on which the GraphQL API is generated
+
+type CreditCard @model {
+    id: ID! @isUnique
+    createdAt: Datetime!
+    updateAt: Datetime!
+
+    cardNumber: String!
+    expirationDate: String!
+    cvc: String!
+}
+
+type SoccerPlayer @model {
+    id: ID! @isUnique
+    createdAt: Datetime!
+    updateAt: Datetime!
+
+    name: String!
+    type: String!
+    isCaptain: Boolean! @defaultValue(value: false)
+    teamName: String!
+
+    virtualTeamAttached: VirtualTeam @relation(value: "playersTeam")
+    
+}
+
+type VirtualTeam @model {
+    id: ID! @isUnique
+    createdAt: Datetime!
+    updateAt: Datetime!
+
+    players: [SoccerPlayer!]! @relation(value: "playersTeam")
+}
+
+type User @model {
+  id: ID! @isUnique
+  createdAt: Datetime!
+  updateAt: Datetime!
+
+  name: String!
+  email: String!
+  password: String!
+  dateOfBirthday: Datetime!
+
+
+
+
+
+}
+
+
+# Uncomment the model below as well
+
+# type Post @model {
+#   id: ID! @isUnique
+#   title: String!
+#
+#   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
+#   author: User! @relation(name: "UserPosts")
+# }
